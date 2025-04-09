@@ -16,12 +16,18 @@
             <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li>
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </li>
             <li><a href="#projects">Project</a></li>
             <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </div>
 </header>
+
 
 <!-- Hero Section -->
 <section id="home" class="hero">
@@ -32,11 +38,6 @@
 
     <div class="hero-image">
         <img src="images/profile.png" alt="Profile Image">
-        
-        <svg class="wave-border1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
-            <path fill="#5700EF" d="M100,50 Q3000, 150 1500,0 L1440,120 L0,120 Z"></path>
-        </svg>
-        
     </div>
 </section>
 
@@ -134,7 +135,6 @@
 </section>
 
 <!-- Contact Section -->
-<!-- Contact Section -->
 <section id="contact" class="contact">
     <div class="container">
         <h2 class="section-title">Get in Touch</h2>
@@ -188,6 +188,12 @@
             </div>
         </div>
     </div>
+    <form class="contact-form" action="mailto:your.email@example.com" method="POST" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn-primary">Send Message</button>
+    </form>
 </section>
 
 <!-- Footer -->
@@ -197,8 +203,8 @@
 </div>
 </footer>
 
-
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
@@ -211,7 +217,26 @@
             }
         });
     });
+    
+    const toggleButton = document.getElementById('theme-toggle');
+    const toggleIcon = toggleButton.querySelector('i');
+    const body = document.body;
+
+    body.classList.add('dark-mode');
+
+    toggleButton.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+
+        if (body.classList.contains('dark-mode')) {
+            toggleIcon.classList.remove('fa-moon');
+            toggleIcon.classList.add('fa-sun');
+        } else {
+            toggleIcon.classList.remove('fa-sun');
+            toggleIcon.classList.add('fa-moon');
+        }
+    });
 </script>
+
 
 </body>
 </html>
